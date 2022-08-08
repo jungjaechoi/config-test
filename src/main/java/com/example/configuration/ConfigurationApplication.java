@@ -20,6 +20,7 @@ public class ConfigurationApplication {
 
 		try{
 			JSch jsch = new JSch();
+			System.out.println("-------------------------------------");
 			Session session = jsch.getSession("jj", private_dns);
 			session.setPassword("8989");
 			java.util.Properties config = new java.util.Properties();
