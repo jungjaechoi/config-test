@@ -21,12 +21,9 @@ public class ConfigurationApplication {
 		try{
 			JSch jsch = new JSch();
 			System.out.println("-------------------------------------");
-			Session session = jsch.getSession("jj", private_dns);
+			Session session = jsch.getSession("jj", private_dns, 22);
 			session.setPassword("8989");
-			java.util.Properties config = new java.util.Properties();
-			config.put("StrictHostKeyChecking", "no");
-			config.put("PAMAuthenitcationViaKDBInt", "no");
-			session.setConfig(config);
+			session.setConfig("StrictHostKeyChecking", "no");
 			System.out.println("-------------------------------------");
 			session.connect();  //연결
 			System.out.println("-------------------------------------");
