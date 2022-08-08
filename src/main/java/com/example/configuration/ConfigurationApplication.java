@@ -24,9 +24,11 @@ public class ConfigurationApplication {
 			session.setPassword("8989");
 			java.util.Properties config = new java.util.Properties();
 			config.put("StrictHostKeyChecking", "no");
+			config.put("PAMAuthenitcationViaKDBInt", "no");
 			session.setConfig(config);
+			System.out.println("-------------------------------------");
 			session.connect();  //연결
-
+			System.out.println("-------------------------------------");
 			Channel channel = session.openChannel("exec");  //채널접속
 			ChannelExec channelExec = (ChannelExec) channel; //명령 전송 채널사용
 			channelExec.setPty(true);
@@ -38,7 +40,7 @@ public class ConfigurationApplication {
 			((ChannelExec) channel).setErrStream(System.err);
 
 			channel.connect();  //실행
-
+			System.out.println("-------------------------------------");
 
 			byte[] tmp = new byte[1024];
 			while (true) {
