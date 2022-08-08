@@ -16,7 +16,7 @@ public class ConfigurationApplication {
 
 		SpringApplication.run(ConfigurationApplication.class, args);
 
-		String private_dns = "172.16.155.51";
+		String private_dns = "13.113.251.130";
 
 		try{
 			JSch jsch = new JSch();
