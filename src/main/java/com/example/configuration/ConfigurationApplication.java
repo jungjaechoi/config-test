@@ -16,8 +16,7 @@ public class ConfigurationApplication {
 
 		SpringApplication.run(ConfigurationApplication.class, args);
 
-//		String private_dns = "localhost";
-//		String user_name = "www898975@gmail.com";
+
 
 		try{
 
@@ -34,21 +33,12 @@ public class ConfigurationApplication {
 			Session session = jsch.getSession(user, host, port);
 			System.out.println("session created.");
 
-			// disabling StrictHostKeyChecking may help to make connection but makes it insecure
-			// see http://stackoverflow.com/questions/30178936/jsch-sftp-security-with-session-setconfigstricthostkeychecking-no
-			//
+
 			java.util.Properties config = new java.util.Properties();
 			config.put("StrictHostKeyChecking", "no");
 			session.setConfig(config);
 
 			session.connect();
-//			JSch jsch = new JSch();
-//			System.out.println("-------------------------------------");
-//			Session session = jsch.getSession("www898975@gmail.com", private_dns, 22);
-//			session.setPassword("8989");
-//			session.setConfig("StrictHostKeyChecking", "no");
-//			System.out.println("-------------------------------------");
-//			session.connect();  //연결
 			System.out.println("-------------------------------------");
 			Channel channel = session.openChannel("exec");  //채널접속
 			ChannelExec channelExec = (ChannelExec) channel; //명령 전송 채널사용
@@ -63,19 +53,6 @@ public class ConfigurationApplication {
 			channel.connect();  //실행
 			System.out.println("-------------------------------------");
 
-//			byte[] tmp = new byte[1024];
-//			while (true) {
-//				while (in.available() > 0) {
-//					int i = in.read(tmp, 0, 1024);
-//					outputBuffer.append(new String(tmp, 0, i));
-//					if (i < 0) break;
-//				}
-//				if (channel.isClosed()) {
-//					System.out.println("결과");
-//					System.out.println(outputBuffer.toString());
-//					channel.disconnect();
-//				}
-//			}
 		}
 		catch(Exception e){
 			System.out.println(e);
