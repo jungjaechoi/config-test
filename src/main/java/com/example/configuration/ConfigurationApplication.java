@@ -24,9 +24,9 @@ public class ConfigurationApplication {
 			JSch jsch=new JSch();
 
 			String user = "ec2-user";
-			String host = "172.16.155.51";
+			String host = "172.16.156.132";
 			int port = 22;
-			String privateKey = "test_key.pem";
+			String privateKey = "/home/test_key.pem";
 
 			jsch.addIdentity(privateKey);
 			System.out.println("identity added ");
