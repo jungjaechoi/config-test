@@ -24,7 +24,7 @@ public class ConfigurationApplication {
 			JSch jsch=new JSch();
 
 			String user = "ec2-user";
-			String host = "172.16.156.132";
+			String host = "52.192.193.232";
 			int port = 22;
 			String privateKey = "/home/test_key.pem";
 
