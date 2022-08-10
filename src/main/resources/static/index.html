@@ -37,12 +37,14 @@
                 newValue: document.getElementById("prev").value
             }
 
+
+
             $(document).ready(function(){
                 $.ajax({
                     url: "/diff",
                     type: "post",
                     data: {
-                        'jsonToCompare' : jsonToCompare
+                        'jsonToCompare' : JSON.stringify(jsonToCompare)
                     },
                     datatype: "json",
                     contentType: 'application/json',

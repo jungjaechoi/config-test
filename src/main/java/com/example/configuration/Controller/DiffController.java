@@ -20,6 +20,7 @@ public class DiffController {
     @PostMapping("/diff")
     public String getDiffernece(@RequestBody jsonToCompare jsonToCompare){
 
+        System.out.println(jsonToCompare.getOldValue());
         return tc.getChanges(jsonToCompare.getOldValue(),jsonToCompare.getNewValue());
 
     }
