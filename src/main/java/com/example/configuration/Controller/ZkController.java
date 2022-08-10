@@ -1,16 +1,11 @@
-package com.example.configuration;
+package com.example.configuration.Controller;
 
-import org.apache.catalina.connector.Response;
+import com.example.configuration.Model.cNode;
+import com.example.configuration.Service.ZkService;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
 
 @RestController
 public class ZkController {
@@ -64,12 +59,14 @@ public class ZkController {
 //                }
 //
 //                br.close();
+                return pathData;
 
             }
             else{
                 System.out.println("Node does not exists");
+                return "";
             }
-            return "success";
+
 
         }
         catch(Exception e){

@@ -1,4 +1,4 @@
-package com.example.configuration;
+package com.example.configuration.Service;
 
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;

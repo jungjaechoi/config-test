@@ -1,5 +1,6 @@
 package com.example.configuration;
 
+import com.example.configuration.Service.ZkService;
 import org.apache.zookeeper.ZooKeeper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

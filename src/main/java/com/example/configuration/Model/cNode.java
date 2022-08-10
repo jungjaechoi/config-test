@@ -1,4 +1,4 @@
-package com.example.configuration;
+package com.example.configuration.Model;
 
 public class cNode {
 
