@@ -8,7 +8,7 @@
 <body>
 
     <input id="config" type="text" name="config" style="width:500px; height: 2000px;">
-    <input type="text" name="prev">
+    <input type="text" name="prev" style="display: none">
     <input type="button" value="수정" onclick="update()">
 
 
@@ -26,8 +26,8 @@
                     const obj = JSON.parse(result);
                     console.log(obj);
 
-                    $('input[name=config]').attr('value',result);
-                    $('input[name=prev]').attr('value',result);
+                    $('input[name=config]').attr('value',JSON.stringify(obj));
+                    $('input[name=prev]').attr('value',JSON.stringify(obj));
                 }
             })
         });
