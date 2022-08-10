@@ -43,9 +43,7 @@
                 $.ajax({
                     url: "/diff",
                     type: "post",
-                    data: {
-                        'jsonToCompare' : JSON.stringify(jsonToCompare)
-                    },
+                    data: JSON.stringify(jsonToCompare),
                     datatype: "json",
                     contentType: 'application/json',
                     success: function(result){
