@@ -7,12 +7,10 @@
 </head>
 <body>
 
-    <textarea name="config" rows="100" cols="100"></textarea>
-    <textarea name="prev" rows="100" cols="100"></textarea>
+    <textarea id = "config" name="config" rows="100" cols="100"></textarea>
+    <textarea id = "prev" name="prev" rows="100" cols="100" style="display: none"></textarea>
 
     <input type="button" value="수정" onclick="update()">
-
-
 
     <script type="text/javascript">
 
@@ -25,14 +23,13 @@
 
                     const obj = JSON.parse(result);
 
-                    $('textarea[name=config]').value = result;
-                    $('textarea[name=prev]').value = result;
+                    document.getElementById("config").value = result;
+                    document.getElementById("prev").value = result;
                 }
             })
         });
 
         function update(){
-
             $(document).ready(function(){
                 $.ajax({
                     url: "/diff",
