@@ -19,6 +19,7 @@
                 url: `/get?path=/between/global`,
                 type: "get",
                 datatype: "json",
+                contentType: 'application/json',
                 success: function(result){
 
                     const obj = JSON.parse(result);
@@ -39,6 +40,7 @@
                         'newJson' : document.getElementById("prev").value
                     },
                     datatype: "json",
+                    contentType: 'application/json',
                     success: function(result){
                         console.log(result);
                     }
