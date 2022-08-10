@@ -31,13 +31,18 @@
         });
 
         function update(){
+
+            let jsonToCompare = {
+                oldValue: document.getElementById("prev").value,
+                newValue: document.getElementById("prev").value
+            }
+
             $(document).ready(function(){
                 $.ajax({
                     url: "/diff",
                     type: "post",
                     data: {
-                        'oldJson' : document.getElementById("config").value,
-                        'newJson' : document.getElementById("prev").value
+                        'jsonToCompare' : jsonToCompare
                     },
                     datatype: "json",
                     contentType: 'application/json',
