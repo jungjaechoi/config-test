@@ -35,8 +35,8 @@
                     url: "/diff",
                     type: "post",
                     data: {
-                        'oldJson' : $('textarea[name=prev]').value,
-                        'newJson' : $('textarea[name=config]').value
+                        'oldJson' : document.getElementById("config").value,
+                        'newJson' : document.getElementById("prev").value
                     },
                     datatype: "json",
                     success: function(result){
