@@ -7,8 +7,9 @@
 </head>
 <body>
 
-    <input id="config" type="text" name="config" style="width:500px; height: 2000px;">
-    <input type="text" name="prev" style="display: none">
+    <textarea name="config" rows="100" cols="100"></textarea>
+    <textarea name="prev" rows="100" cols="100"></textarea>
+
     <input type="button" value="수정" onclick="update()">
 
 
@@ -22,12 +23,10 @@
                 datatype: "json",
                 success: function(result){
 
-                    console.log(result);
                     const obj = JSON.parse(result);
-                    console.log(obj);
 
-                    $('input[name=config]').attr('value',JSON.stringify(obj,null,4));
-                    $('input[name=prev]').attr('value',JSON.stringify(obj,null,4));
+                    $('input[name=config]').attr('value',result);
+                    $('input[name=prev]').attr('value',result);
                 }
             })
         });
