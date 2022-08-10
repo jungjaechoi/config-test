@@ -25,8 +25,8 @@
 
                     const obj = JSON.parse(result);
 
-                    $('input[name=config]').innerHTML(result);
-                    $('input[name=prev]').innerHTML(result);
+                    $('input[name=config]').innerHTML = result;
+                    $('input[name=prev]').innerHTML = result;
                 }
             })
         });
@@ -40,8 +40,8 @@
                     url: "/diff",
                     type: "post",
                     data: {
-                        'oldJson' : $('input[name=prev]').val(),
-                        'newJson' : $('input[name=config]').val()
+                        'oldJson' : $('input[name=prev]').innerHTML,
+                        'newJson' : $('input[name=config]').innerHTML
                     },
                     datatype: "json",
                     success: function(result){
