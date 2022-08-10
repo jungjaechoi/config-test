@@ -25,8 +25,8 @@
 
                     const obj = JSON.parse(result);
 
-                    $('input[name=config]').attr('value',result);
-                    $('input[name=prev]').attr('value',result);
+                    $('input[name=config]').innerHTML(result);
+                    $('input[name=prev]').innerHTML(result);
                 }
             })
         });
