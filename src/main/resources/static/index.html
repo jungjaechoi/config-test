@@ -6,9 +6,15 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
+
     <input id="config" type="text" name="config">
+    <input type="text" name="prev">
+    <input type="button" value="수정" onclick="update()">
+
+
 
     <script type="text/javascript">
+
         $(document).ready(function(){
             $.ajax({
                 url: `/get?path=/between/global`,
@@ -20,10 +26,32 @@
                     const obj = JSON.parse(result);
                     console.log(obj);
 
-                    $('input[name=config]').attr('value',obj);
+                    $('input[name=config]').attr('value',result);
+                    $('input[name=prev]').attr('value',result);
                 }
             })
-        })
+        });
+
+        function update(){
+            const prev = $('input[name=prev]').val();
+            const now = $('input[name=config]').val();
+
+            $(document).ready(function(){
+                $.ajax({
+                    url: "/diff",
+                    type: "post",
+                    data: {
+                        'oldJson' : $('input[name=prev]').val(),
+                        'newJson' : $('input[name=config]').val()
+                    },
+                    datatype: "json",
+                    success: function(result){
+                        console.log(result);
+                    }
+                })
+            });
+        }
+
     </script>
 </body>
 </html>

@@ -5,6 +5,7 @@ import org.apache.zookeeper.ZooKeeper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.w3c.dom.Text;
 
 @Configuration
 public class SpringConfig {
@@ -26,6 +27,4 @@ public class SpringConfig {
             return null;
         }
     }
-
-
 }
