@@ -15,8 +15,12 @@
                 type: "get",
                 datatype: "json",
                 success: function(result){
-                    const config = document.getElementById("config");
-                    config.innerHTML = result;
+
+                    console.log(result);
+                    const obj = JSON.parse(result);
+                    console.log(obj);
+
+                    $('input[name=config]').attr('value',obj);
                 }
             })
         })
