@@ -25,23 +25,21 @@
 
                     const obj = JSON.parse(result);
 
-                    $('input[name=config]').innerHTML = result;
-                    $('input[name=prev]').innerHTML = result;
+                    $('textarea[name=config]').innerHTML = result;
+                    $('textarea[name=prev]').innerHTML = result;
                 }
             })
         });
 
         function update(){
-            const prev = $('input[name=prev]').val();
-            const now = $('input[name=config]').val();
 
             $(document).ready(function(){
                 $.ajax({
                     url: "/diff",
                     type: "post",
                     data: {
-                        'oldJson' : $('input[name=prev]').innerHTML,
-                        'newJson' : $('input[name=config]').innerHTML
+                        'oldJson' : $('textarea[name=prev]').innerHTML,
+                        'newJson' : $('textarea[name=config]').innerHTML
                     },
                     datatype: "json",
                     success: function(result){
