@@ -7,10 +7,12 @@
 </head>
 <body>
 
-    <textarea id = "config" name="config" rows="100" cols="100"></textarea>
-    <textarea id = "prev" name="prev" rows="100" cols="100" style="display: none"></textarea>
+    <textarea id = "config" name="config" rows="100" cols="60"></textarea>
+    <textarea id = "prev" name="prev" rows="100" cols="60" style="display: none"></textarea>
+    <textarea id = "validate" name="validate" rows="100" cols="60"></textarea>
 
-    <input type="button" value="수정" onclick="update()">
+    <input type="button" value="비교" onclick="compare()">
+    <input id="btn_update" type="button" value="수정" onclick="update()" style="display: none">
 
     <script type="text/javascript">
 
@@ -30,7 +32,7 @@
             })
         });
 
-        function update(){
+        function compare(){
 
             let jsonToCompare = {
                 oldValue: document.getElementById("prev").value,
@@ -47,10 +49,15 @@
                     datatype: "json",
                     contentType: 'application/json',
                     success: function(result){
-                        console.log(result);
+                        document.getElementById("validate").value = result;
+                        document.getElementById("btn_update").style = "";
                     }
                 })
             });
+        }
+
+        function update(){
+            console.log("good");
         }
 
     </script>
