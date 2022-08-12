@@ -1,11 +1,17 @@
 package com.example.configuration;
 
 import com.example.configuration.Service.ZkService;
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
 import org.apache.zookeeper.ZooKeeper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.w3c.dom.Text;
+
+import java.io.InputStream;
 
 @Configuration
 public class SpringConfig {
@@ -17,7 +23,7 @@ public class SpringConfig {
     }
 
     @Bean
-    public ZooKeeper createConnectoin(){
+    public ZooKeeper GetZooKeeperConnection(){
         try{
             ZooKeeper zk = zs.connect("172.20.2.201:2181");
             return zk;
@@ -27,4 +33,5 @@ public class SpringConfig {
             return null;
         }
     }
+
 }
