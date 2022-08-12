@@ -45,7 +45,7 @@ public class ConfigController {
             JSch jsch=new JSch();
 
             String user = "ec2-user";
-            String host = "54.250.3.218";
+            String host = "54.178.100.107";
             int port = 22;
             String privateKey = "/home/test_key.pem";
 
