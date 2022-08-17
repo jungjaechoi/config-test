@@ -7,6 +7,8 @@ import org.apache.zookeeper.data.Stat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileWriter;
+
 @RestController
 public class ZkController {
 
@@ -42,13 +44,12 @@ public class ZkController {
 
             if (stat != null) {
                 byte[] dataByte = zk.getData(path, false, null);
-                System.out.println(dataByte);
                 String pathData = new String(dataByte, "UTF-8");
-//                System.out.println("node : " + path + " , data : " + pathData);
-//                FileWriter file = new FileWriter("/json/test.json");
-//                file.write(pathData);
-//                file.flush();
-//                file.close();
+                System.out.println("node : " + path + " , data : " + pathData);
+                FileWriter file = new FileWriter("/conf/test.json");
+                file.write(pathData);
+                file.flush();
+                file.close();
 
 //                JSONParser parser = new JSONParser();
 //                BufferedReader br = new BufferedReader(new FileReader("/json/test.json"));
@@ -67,8 +68,6 @@ public class ZkController {
                 System.out.println("Node does not exists");
                 return "";
             }
-
-
         }
         catch(Exception e){
             System.out.println(e);
