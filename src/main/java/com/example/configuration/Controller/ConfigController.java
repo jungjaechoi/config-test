@@ -35,41 +35,54 @@ public class ConfigController {
 
 
     @PostMapping("/update")
-    public void updateConfig(@RequestBody String configString){
+    public String updateConfig(@RequestBody String newValue){
 
         try{
-            JSONParser parser = new JSONParser();
-            Object obj = parser.parse(configString);
-            JSONObject jsonObj = (JSONObject) obj;
-
-            JSch jsch=new JSch();
-
-            String user = "ec2-user";
-            String host = "54.178.100.107";
-            int port = 22;
-            String privateKey = "/home/test_key.pem";
-
-            jsch.addIdentity(privateKey);
-            System.out.println("identity added ");
-
-            Session session = jsch.getSession(user, host, port);
-            System.out.println("session created.");
-
-
-            java.util.Properties config = new java.util.Properties();
-            config.put("StrictHostKeyChecking", "no");
-            session.setConfig(config);
-
-            session.connect();
-
-            Channel channel = session.openChannel("exec");  //채널접속
-            ChannelExec ce = (ChannelExec) channel; //명령 전송 채널사용
-            ce.setPty(true);
-            System.out.println("-------------------------------------");
+            FileWriter file = new FileWriter("/conf/global.json");
+            file.write(newValue);
+            file.flush();
+            file.close();
+            return "success";
         }
         catch(Exception e){
-            System.out.println(e);
+            System.out.println("Error:"+e);
+            return "fail";
         }
+
+
+//        try{
+//            JSONParser parser = new JSONParser();
+//            Object obj = parser.parse(configString);
+//            JSONObject jsonObj = (JSONObject) obj;
+//
+//            JSch jsch=new JSch();
+//
+//            String user = "ec2-user";
+//            String host = "54.178.100.107";
+//            int port = 22;
+//            String privateKey = "/home/test_key.pem";
+//
+//            jsch.addIdentity(privateKey);
+//            System.out.println("identity added ");
+//
+//            Session session = jsch.getSession(user, host, port);
+//            System.out.println("session created.");
+//
+//
+//            java.util.Properties config = new java.util.Properties();
+//            config.put("StrictHostKeyChecking", "no");
+//            session.setConfig(config);
+//
+//            session.connect();
+//
+//            Channel channel = session.openChannel("exec");  //채널접속
+//            ChannelExec ce = (ChannelExec) channel; //명령 전송 채널사용
+//            ce.setPty(true);
+//            System.out.println("-------------------------------------");
+//        }
+//        catch(Exception e){
+//            System.out.println(e);
+//        }
     }
 
 }

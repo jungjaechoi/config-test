@@ -57,9 +57,23 @@
         }
 
         function update(){
+
             const result = confirm("정말로 수정하시겠습니까?");
+            const newValue = document.getElementById("config").value;
+
             if(result){
-                console.log("이이이이이이잉");
+                $(document).ready(function(){
+                    $.ajax({
+                        url: "/update",
+                        type: "post",
+                        data: {newValue: newValue},
+                        datatype: "json",
+                        contentType: 'application/json',
+                        success: function(result){
+                            console.log(result);
+                        }
+                    })
+                });
             }
         }
 
