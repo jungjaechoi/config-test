@@ -1,6 +1,7 @@
 package com.example.configuration.Controller;
 
 import com.example.configuration.Model.jsonToCompare;
+import com.example.configuration.Model.jsonToUpdate;
 import com.example.configuration.Service.TextChanges;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
@@ -34,9 +35,10 @@ public class ConfigController {
 
 
     @PostMapping("/update")
-    public String updateConfig(@RequestBody String newValue){
+    public String updateConfig(@RequestBody jsonToUpdate jsonToUpdate){
 
         try{
+            String newValue = jsonToUpdate.getNewValue();
             System.out.println(newValue);
             FileWriter file = new FileWriter("/conf/global.json");
             file.write(newValue);
