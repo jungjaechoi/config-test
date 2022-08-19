@@ -45,7 +45,6 @@ public class ZkController {
             if (stat != null) {
                 byte[] dataByte = zk.getData(path, false, null);
                 String pathData = new String(dataByte, "UTF-8");
-                System.out.println("node : " + path + " , data : " + pathData);
                 FileWriter file = new FileWriter("/conf/global.json");
                 file.write(pathData);
                 file.flush();

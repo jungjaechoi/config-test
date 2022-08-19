@@ -28,8 +28,6 @@ public class ConfigController {
 
     @PostMapping("/diff")
     public String getDiffernece(@RequestBody jsonToCompare jsonToCompare){
-
-        System.out.println("diff"+jsonToCompare.getNewValue());
         return tc.getChanges(jsonToCompare.getOldValue(),jsonToCompare.getNewValue());
 
     }
@@ -39,6 +37,7 @@ public class ConfigController {
     public String updateConfig(@RequestBody String newValue){
 
         try{
+            System.out.println(newValue);
             FileWriter file = new FileWriter("/conf/global.json");
             file.write(newValue);
             file.flush();
