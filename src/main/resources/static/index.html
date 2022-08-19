@@ -59,16 +59,17 @@
         function update(){
 
             const result = confirm("정말로 수정하시겠습니까?");
-            const newValue = document.getElementById("config").value;
 
-
+            let jsonToUpdate = {
+                newValue: document.getElementById("config").value
+            }
 
             if(result){
                 $(document).ready(function(){
                     $.ajax({
                         url: "/update",
                         type: "post",
-                        data: {newValue: newValue},
+                        data: JSON.stringify(jsonToUpdate),
                         datatype: "json",
                         contentType: 'application/json',
                         success: function(result){
