@@ -29,6 +29,7 @@ public class ConfigController {
     @PostMapping("/diff")
     public String getDiffernece(@RequestBody jsonToCompare jsonToCompare){
 
+        System.out.println("diff"+jsonToCompare.getNewValue());
         return tc.getChanges(jsonToCompare.getOldValue(),jsonToCompare.getNewValue());
 
     }
